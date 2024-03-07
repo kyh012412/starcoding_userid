@@ -1,10 +1,9 @@
-import { useId } from 'react';
+import { useEffect, useId } from 'react';
 import './App.css';
 
 function App() {
   return (
     <div>
-      <MyInput />
       <MyInput />
     </div>
   );
@@ -12,14 +11,17 @@ function App() {
 
 function MyInput() {
   const id = useId();
-  console.log(id);
+
+  useEffect(() => {
+    const element = document.querySelector('#btn');
+    console.log(element);
+  }, []);
+
   return (
     <div>
+      <button id="btn">버튼</button>
       <label htmlFor={`${id}-name`}>이름</label>
       <input id={`${id}-name`} type="text" />
-
-      <label htmlFor={`${id}-age`}>나이</label>
-      <input id={`${id}-age`} type="text" />
     </div>
   );
 }
